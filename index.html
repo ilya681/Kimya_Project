@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Frame - Whale</title>
+    <style>
+        /* طراحی مینیمال و تاریک برای قاب عکس */
+        body {
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .whale-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px #3498db);
+        }
+
+        h1 { font-size: 1.5rem; font-weight: 300; letter-spacing: 1px; }
+        p { color: #7f8c8d; font-size: 0.9rem; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body onclick="startExperience()">
+
+    <div class="container" id="main-ui">
+        <div class="whale-icon">🐋</div>
+        <h1>والِ تنها</h1>
+        <p>برای شروع تجربه، صفحه را لمس کنید</p>
+    </div>
+
+<audio id="audio" loop>
+    <source src="https://github.com/ilya681/Kimya_Project/releases/download/sounf/whale.mp3" type="audio/mpeg">
+</audio>
+
+
+    <script>
+        function startExperience() {
+            const audio = document.getElementById('audio');
+            const ui = document.getElementById('main-ui');
+
+            // تلاش برای پخش موسیقی
+            audio.play().then(() => {
+                // اگر پخش موفق بود، تغییر ظاهر صفحه
+                ui.innerHTML = `
+                    <div class="whale-icon">🌊</div>
+                    <h1>در حال شنیدن...</h1>
+                    <p>Enjoy the silence</p>
+                `;
+            }).catch(error => {
+                console.error("Error playing audio:", error);
+                alert("متاسفانه لینک مستقیم موسیقی مسدود شده است یا اشتباه است.");
+            });
+        }
+    </script>
+</body>
+</html>
