@@ -73,13 +73,16 @@
             const ui = document.getElementById('main-ui');
 
             // تلاش برای پخش موسیقی
-            audio.play()
+            audio.play().then(()=>{
+
 
                 // اگر پخش موفق بود، تغییر ظاهر صفحه
             ui.innerHTML = `
                 <div class="whale-icon">🌊</div>
                 <h1>در حال شنیدن...</h1>
                 `
+
+            })
 
         }
     </script>
