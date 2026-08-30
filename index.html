@@ -38,6 +38,19 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .btn{
+            width: 100px;
+            padding: 5px;
+            font: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            filter: drop-shadow(0 0 10px #3498db);
+            color: white;
+            cursor: pointer;
+            background-color: #3498db;
+        }
     </style>
 </head>
 <body onclick="startExperience()">
@@ -46,7 +59,7 @@
         <div class="whale-icon">🐋</div>
         <h1>والِ تنها</h1>
         <p>برای شروع تجربه، صفحه را لمس کنید</p>
-        <button type="button" onclick="startExperience()">Click</button>
+        <button type="button" onclick="startExperience()" class="btn">پخش صدا</button>
     </div>
 
 <audio id="audio" loop>
@@ -60,17 +73,14 @@
             const ui = document.getElementById('main-ui');
 
             // تلاش برای پخش موسیقی
-            audio.play().then(() => {
+            audio.play()
+
                 // اگر پخش موفق بود، تغییر ظاهر صفحه
-                ui.innerHTML = `
-                    <div class="whale-icon">🌊</div>
-                    <h1>در حال شنیدن...</h1>
-                    <p>Enjoy the silence</p>
-                `;
-            }).catch(error => {
-                console.error("Error playing audio:", error);
-                alert("متاسفانه لینک مستقیم موسیقی مسدود شده است یا اشتباه است.");
-            });
+            ui.innerHTML = `
+                <div class="whale-icon">🌊</div>
+                <h1>در حال شنیدن...</h1>
+                `
+
         }
     </script>
 </body>
